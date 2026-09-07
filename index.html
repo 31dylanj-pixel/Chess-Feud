@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Chess Club Family Feud</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;900&family=Playfair+Display:wght@700;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =========================
+       SLIDE 1: TITLE
+  ========================== -->
+
+  <section class="slide active title-slide" id="slide-title">
+
+    <div class="hero-bg"></div>
+
+    <div class="title-content">
+
+      <p class="game-label">CHESS CLUB PRESENTS</p>
+
+      <h1>Family Feud</h1>
+
+      <p class="title-subtitle">
+        How well do you know what chess players think?
+      </p>
+
+      <button
+        class="primary-button"
+        onclick="goSlide('slide-instructions')"
+      >
+        Instructions →
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SLIDE 2: INSTRUCTIONS
+  ========================== -->
+
+  <section class="slide rules-slide" id="slide-instructions">
+
+    <div class="rules-content">
+
+      <h2>Instructions</h2>
+
+      <p class="rules-subtitle">
+        Before we begin, get your teams ready!
+      </p>
+
+
+      <div class="rules-grid">
+
+        <div class="rule-card">
+
+          <div class="rule-number">1</div>
+
+          <h3>Get Into Teams</h3>
+
+          <p>
+            Get together with your friends and form your teams.
+          </p>
+
+        </div>
+
+
+        <div class="rule-card">
+
+          <div class="rule-number">2</div>
+
+          <h3>Work Together</h3>
+
+          <p>
+            Discuss possible answers with your teammates and think carefully.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="rules-buttons">
+
+        <button
+          class="back-button"
+          onclick="goSlide('slide-title')"
+        >
+          ← Back
+        </button>
+
+
+        <button
+          class="primary-button"
+          onclick="goSlide('slide-rules')"
+        >
+          Rules →
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SLIDE 3: RULES
+  ========================== -->
+
+  <section class="slide rules-slide" id="slide-rules">
+
+    <div class="rules-content">
+
+      <h2>Rules</h2>
+
+      <p class="rules-subtitle">
+        Here's how Chess Family Feud works.
+      </p>
+
+
+      <div class="rules-grid">
+
+        <div class="rule-card">
+
+          <div class="rule-number">1</div>
+
+          <h3>Listen to the Question</h3>
+
+          <p>
+            Each round begins with a chess-related question.
+          </p>
+
+        </div>
+
+
+        <div class="rule-card">
+
+          <div class="rule-number">2</div>
+
+          <h3>Guess the Answers</h3>
+
+          <p>
+            Work with your team to guess the answers hidden on the board.
+          </p>
+
+        </div>
+
+
+        <div class="rule-card">
+
+          <div class="rule-number">3</div>
+
+          <h3>Watch Your Strikes</h3>
+
+          <p>
+            Incorrect answers earn your team a strike. Three strikes gives
+            the other team a chance to steal!
+          </p>
+
+        </div>
+
+
+        <div class="rule-card">
+
+          <div class="rule-number">4</div>
+
+          <h3>Have Fun!</h3>
+
+          <p>
+            Think like a chess player, work together, and enjoy the game.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="rules-note">
+
+        ♟️ <strong>Remember:</strong>
+        The answers are based on the most common responses, so think like
+        the average chess player!
+
+      </div>
+
+
+      <div class="rules-buttons">
+
+        <button
+          class="back-button"
+          onclick="goSlide('slide-instructions')"
+        >
+          ← Back
+        </button>
+
+
+        <button
+          class="primary-button"
+          onclick="startGame()"
+        >
+          Start Family Feud! →
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SLIDE 4: GAME
+  ========================== -->
+
+  <section class="slide feud-slide" id="slide-game">
+
+
+    <!-- Question Header -->
+
+    <div class="game-header">
+
+      <p id="question-number" class="question-number">
+        QUESTION 1 / 10
+      </p>
+
+
+      <h2 id="feud-question">
+        Name something beginners often do in chess.
+      </h2>
+
+
+      <!-- Strikes -->
+
+      <div class="strikes-container">
+
+        <span class="strikes-label">STRIKES</span>
+
+        <div class="strikes">
+
+          <span class="strike" id="strike-1">✕</span>
+
+          <span class="strike" id="strike-2">✕</span>
+
+          <span class="strike" id="strike-3">✕</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- Answer Board -->
+
+    <div id="answer-board" class="answer-board">
+
+      <!-- Generated with JavaScript -->
+
+    </div>
+
+
+    <!-- Answer Input -->
+
+    <div class="answer-controls">
+
+      <input
+        type="text"
+        id="answer-input"
+        placeholder="Type the team's answer..."
+        autocomplete="off"
+      >
+
+      <button
+        class="submit-button"
+        onclick="submitAnswer()"
+      >
+        Submit
+      </button>
+
+    </div>
+
+
+    <!-- Host Controls -->
+
+    <div class="host-controls">
+
+      <button
+        class="secondary-button"
+        onclick="previousQuestion()"
+      >
+        ← Previous
+      </button>
+
+
+      <button
+        class="secondary-button"
+        onclick="revealAllAnswers()"
+      >
+        Reveal All
+      </button>
+
+
+      <button
+        class="secondary-button"
+        onclick="resetRound()"
+      >
+        Reset Round
+      </button>
+
+
+      <button
+        class="primary-button"
+        onclick="nextQuestion()"
+      >
+        Next Question →
+      </button>
+
+    </div>
+
+
+    <button
+      class="back-button game-back-button"
+      onclick="goSlide('slide-rules')"
+    >
+      ← Back to Rules
+    </button>
+
+
+    <!-- Wrong Answer Overlay -->
+
+    <div id="wrong-overlay" class="wrong-overlay">
+
+      <div class="wrong-x">✕</div>
+
+    </div>
+
+
+    <!-- Correct Answer Overlay -->
+
+    <div id="correct-overlay" class="correct-overlay">
+
+      <div class="correct-check">✓</div>
+
+    </div>
+
+
+  </section>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
