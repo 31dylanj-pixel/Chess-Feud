@@ -154,7 +154,7 @@ Because Chess Feud is a static website, it can be run locally or hosted using se
 Simply open:
 
 ```text
-[index.html](https://31dylanj-pixel.github.io/Chess-Feud/)
+https://31dylanj-pixel.github.io/Chess-Feud/
 ```
 
 in a web browser.
