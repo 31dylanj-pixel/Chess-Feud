@@ -1320,7 +1320,7 @@ function showWrongAnimation() {
 
     overlay.classList.remove("show");
 
-  }, 1000);
+  }, 2000);
 
 }
 
@@ -1348,7 +1348,7 @@ function showCorrectAnimation() {
 
     overlay.classList.remove("show");
 
-  }, 700);
+  }, 2000);
 
 }
 
