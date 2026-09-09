@@ -82,6 +82,73 @@ const gameQuestions = [
 
   },
 
+  {
+    question: "Name something chess players blame after losing.",
+
+    answers: [
+
+      {
+        text: "Their opponent got lucky",
+
+        aliases: [
+          "luck",
+          "lucky",
+          "opponent lucky"
+        ]
+      },
+
+      {
+        text: "The clock",
+
+        aliases: [
+          "clock",
+          "time"
+        ]
+      },
+
+      {
+        text: "A distraction",
+
+        aliases: [
+          "distraction",
+          "distracted",
+          "noise"
+        ]
+      },
+
+      {
+        text: "Their opening preparation",
+
+        aliases: [
+          "opening",
+          "bad opening",
+          "opening preparation"
+        ]
+      },
+
+      {
+        text: "A bad day",
+
+        aliases: [
+          "bad day",
+          "off day"
+        ]
+      },
+
+      {
+        text: "Their mouse or internet",
+
+        aliases: [
+          "mouse",
+          "internet",
+          "connection",
+          "lag"
+        ]
+      }
+
+    ]
+
+  },
 
   {
     question: "Name a chess piece that players hate losing.",
@@ -617,75 +684,6 @@ const gameQuestions = [
     ]
 
   },
-
-
-  {
-    question: "Name something chess players blame after losing.",
-
-    answers: [
-
-      {
-        text: "Their opponent got lucky",
-
-        aliases: [
-          "luck",
-          "lucky",
-          "opponent lucky"
-        ]
-      },
-
-      {
-        text: "The clock",
-
-        aliases: [
-          "clock",
-          "time"
-        ]
-      },
-
-      {
-        text: "A distraction",
-
-        aliases: [
-          "distraction",
-          "distracted",
-          "noise"
-        ]
-      },
-
-      {
-        text: "Their opening preparation",
-
-        aliases: [
-          "opening",
-          "bad opening",
-          "opening preparation"
-        ]
-      },
-
-      {
-        text: "A bad day",
-
-        aliases: [
-          "bad day",
-          "off day"
-        ]
-      },
-
-      {
-        text: "Their mouse or internet",
-
-        aliases: [
-          "mouse",
-          "internet",
-          "connection",
-          "lag"
-        ]
-      }
-
-    ]
-
-  }
 
 ];
 
