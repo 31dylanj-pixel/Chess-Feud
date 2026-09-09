@@ -969,7 +969,7 @@ input {
 
   visibility: visible;
 
-  animation: wrongFlash 1s ease forwards;
+  animation: wrongFlash 2s ease forwards;
 
 }
 
@@ -995,13 +995,13 @@ input {
 
   }
 
-  15% {
+  10% {
 
     opacity: 1;
 
   }
 
-  75% {
+  85% {
 
     opacity: 1;
 
@@ -1016,7 +1016,6 @@ input {
   }
 
 }
-
 
 /* =========================================
    CORRECT OVERLAY
@@ -1045,7 +1044,7 @@ input {
 
 .correct-overlay.show {
 
-  animation: correctFlash 0.7s ease;
+  animation: correctFlash 2s ease;
 
 }
 
@@ -1071,11 +1070,19 @@ input {
 
   }
 
-  40% {
+  20% {
 
     opacity: 1;
 
     transform: scale(1.1);
+
+  }
+
+  85% {
+
+    opacity: 1;
+
+    transform: scale(1);
 
   }
 
@@ -1088,8 +1095,6 @@ input {
   }
 
 }
-
-
 /* =========================================
    MOBILE
 ========================================= */
