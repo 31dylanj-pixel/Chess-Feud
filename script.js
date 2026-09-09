@@ -900,6 +900,31 @@ function playSound(sound) {
 updateMusicButton();
 
 // ==========================================
+// SLIDE NAVIGATION
+// ==========================================
+
+function goSlide(id) {
+
+  document.querySelectorAll(".slide").forEach((slide) => {
+
+    slide.classList.remove("active");
+
+  });
+
+
+  const target =
+    document.getElementById(id);
+
+
+  if (target) {
+
+    target.classList.add("active");
+
+  }
+
+}
+
+// ==========================================
 // START GAME
 // ==========================================
 
