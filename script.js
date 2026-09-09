@@ -722,15 +722,12 @@ const musicVolume =
 
 
 // ------------------------------------------
-// INITIAL AUDIO SETTINGS
+// INITIAL SETTINGS
 // ------------------------------------------
 
 backgroundMusic.volume = 0.35;
 
 musicVolume.value = 0.35;
-
-
-// Sound effects have their own volume
 
 correctSound.volume = 1;
 
@@ -738,7 +735,7 @@ strikeSound.volume = 1;
 
 
 // ------------------------------------------
-// MUSIC BUTTON
+// UPDATE MUSIC BUTTON
 // ------------------------------------------
 
 function updateMusicButton() {
@@ -794,37 +791,41 @@ function updateMusicButton() {
 
 async function toggleMusic() {
 
-  if (backgroundMusic.paused) {
+  // If music is currently playing, pause it
 
-    try {
+  if (!backgroundMusic.paused) {
 
-      await backgroundMusic.play();
+    backgroundMusic.pause();
 
-      updateMusicButton();
+    updateMusicButton();
 
-    }
+    return;
 
-    catch (error) {
+  }
+
+
+  // Otherwise start/resume it
+
+  try {
+
+    await backgroundMusic.play();
+
+    updateMusicButton();
+
+  }
+
+  catch (error) {
+
+    // Ignore AbortError caused by a rapid click
+
+    if (error.name !== "AbortError") {
 
       console.error(
         "Could not play background music:",
         error
       );
 
-      musicToggle.textContent = "⚠️";
-
-      musicToggle.title =
-        "Music could not be played";
-
     }
-
-  }
-
-  else {
-
-    backgroundMusic.pause();
-
-    updateMusicButton();
 
   }
 
@@ -849,7 +850,7 @@ musicVolume.addEventListener(
 
 
 // ------------------------------------------
-// AUDIO STATE EVENTS
+// AUDIO EVENTS
 // ------------------------------------------
 
 backgroundMusic.addEventListener(
@@ -857,12 +858,10 @@ backgroundMusic.addEventListener(
   updateMusicButton
 );
 
-
 backgroundMusic.addEventListener(
   "pause",
   updateMusicButton
 );
-
 
 backgroundMusic.addEventListener(
   "ended",
@@ -871,7 +870,7 @@ backgroundMusic.addEventListener(
 
 
 // ------------------------------------------
-// PLAY SOUND EFFECT
+// SOUND EFFECTS
 // ------------------------------------------
 
 function playSound(sound) {
@@ -899,31 +898,6 @@ function playSound(sound) {
 
 
 updateMusicButton();
-
-// ==========================================
-// SLIDE NAVIGATION
-// ==========================================
-
-function goSlide(id) {
-
-  document.querySelectorAll(".slide").forEach((slide) => {
-
-    slide.classList.remove("active");
-
-  });
-
-
-  const target = document.getElementById(id);
-
-
-  if (target) {
-
-    target.classList.add("active");
-
-  }
-
-}
-
 
 // ==========================================
 // START GAME
