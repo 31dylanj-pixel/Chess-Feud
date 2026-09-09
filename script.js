@@ -438,8 +438,7 @@ const gameQuestions = [
 
         aliases: [
           "miss tactic",
-          "missed tactic",
-          "miss tactic"
+          "missed tactic"
         ]
       },
 
@@ -700,6 +699,197 @@ let currentQuestionIndex = 0;
 let revealedAnswers = [];
 
 let strikes = 0;
+
+
+// ==========================================
+// AUDIO
+// ==========================================
+
+const backgroundMusic =
+  document.getElementById("background-music");
+
+const correctSound =
+  document.getElementById("correct-sound");
+
+const strikeSound =
+  document.getElementById("strike-sound");
+
+const musicToggle =
+  document.getElementById("music-toggle");
+
+const musicVolume =
+  document.getElementById("music-volume");
+
+let musicPlaying = false;
+
+
+// Background music starts at 35% volume
+
+backgroundMusic.volume = 0.35;
+
+
+// Keep sound effects independent from music volume
+
+correctSound.volume = 1;
+
+strikeSound.volume = 1;
+
+
+// ------------------------------------------
+// UPDATE MUSIC BUTTON
+// ------------------------------------------
+
+function updateMusicButton() {
+
+  if (!musicPlaying || backgroundMusic.volume === 0) {
+
+    musicToggle.textContent = "🔇";
+
+    musicToggle.setAttribute(
+      "aria-label",
+      "Start music"
+    );
+
+    musicToggle.title = "Start music";
+
+    return;
+
+  }
+
+
+  if (backgroundMusic.volume < 0.5) {
+
+    musicToggle.textContent = "🔉";
+
+  }
+
+  else {
+
+    musicToggle.textContent = "🔊";
+
+  }
+
+
+  musicToggle.setAttribute(
+    "aria-label",
+    "Pause music"
+  );
+
+  musicToggle.title = "Pause music";
+
+}
+
+
+// ------------------------------------------
+// START MUSIC
+// ------------------------------------------
+
+async function startMusic() {
+
+  try {
+
+    await backgroundMusic.play();
+
+    musicPlaying = true;
+
+    updateMusicButton();
+
+  }
+
+  catch (error) {
+
+    console.warn(
+      "Background music could not start:",
+      error
+    );
+
+  }
+
+}
+
+
+// ------------------------------------------
+// STOP / PAUSE MUSIC
+// ------------------------------------------
+
+function stopMusic() {
+
+  backgroundMusic.pause();
+
+  musicPlaying = false;
+
+  updateMusicButton();
+
+}
+
+
+// ------------------------------------------
+// TOGGLE MUSIC
+// ------------------------------------------
+
+function toggleMusic() {
+
+  if (musicPlaying) {
+
+    stopMusic();
+
+  }
+
+  else {
+
+    startMusic();
+
+  }
+
+}
+
+
+// ------------------------------------------
+// MUSIC VOLUME
+// ------------------------------------------
+
+musicVolume.addEventListener(
+  "input",
+  () => {
+
+    backgroundMusic.volume =
+      Number(musicVolume.value);
+
+    updateMusicButton();
+
+  }
+);
+
+
+// ------------------------------------------
+// PLAY SOUND EFFECT
+// ------------------------------------------
+
+function playSound(sound) {
+
+  if (!sound) {
+
+    return;
+
+  }
+
+
+  sound.currentTime = 0;
+
+
+  sound.play().catch((error) => {
+
+    console.warn(
+      "Sound effect could not play:",
+      error
+    );
+
+  });
+
+}
+
+
+updateMusicButton();
 
 
 // ==========================================
@@ -987,6 +1177,8 @@ function submitAnswer() {
 
     revealAnswer(correctIndex);
 
+    playSound(correctSound);
+
     showCorrectAnimation();
 
   }
@@ -999,6 +1191,8 @@ function submitAnswer() {
     strikes++;
 
     updateStrikes();
+
+    playSound(strikeSound);
 
     showWrongAnimation();
 
