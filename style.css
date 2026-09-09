@@ -476,6 +476,98 @@ input {
 }
 
 
+/* =========================================
+   MUSIC CONTROLS
+========================================= */
+
+.music-controls {
+
+  position: absolute;
+
+  top: 1.25rem;
+
+  right: 1.25rem;
+
+  z-index: 30;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 0.65rem;
+
+  padding: 0.5rem 0.7rem;
+
+  border-radius: 0.75rem;
+
+  background: rgba(30, 27, 75, 0.72);
+
+  border: 1px solid rgba(255, 255, 255, 0.18);
+
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+
+}
+
+
+.music-toggle {
+
+  width: 2.2rem;
+
+  height: 2.2rem;
+
+  padding: 0;
+
+  border: 0;
+
+  border-radius: 0.55rem;
+
+  background: rgba(255, 255, 255, 0.1);
+
+  color: white;
+
+  font-size: 1.05rem;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+
+}
+
+
+.music-toggle:hover {
+
+  background: rgba(255, 255, 255, 0.18);
+
+  transform: scale(1.05);
+
+}
+
+
+.music-volume {
+
+  width: 105px;
+
+  cursor: pointer;
+
+  accent-color: var(--gold);
+
+}
+
+
+/* =========================================
+   GAME HEADER
+========================================= */
+
 .game-header {
 
   width: 100%;
@@ -1030,6 +1122,24 @@ input {
     justify-content: flex-start;
 
     overflow-y: auto;
+
+    padding-top: 5rem;
+
+  }
+
+
+  .music-controls {
+
+    top: 0.75rem;
+
+    right: 0.75rem;
+
+  }
+
+
+  .music-volume {
+
+    width: 80px;
 
   }
 
