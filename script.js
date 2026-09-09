@@ -720,15 +720,17 @@ const musicToggle =
 const musicVolume =
   document.getElementById("music-volume");
 
-let musicPlaying = false;
 
-
-// Background music starts at 35% volume
+// ------------------------------------------
+// INITIAL AUDIO SETTINGS
+// ------------------------------------------
 
 backgroundMusic.volume = 0.35;
 
+musicVolume.value = 0.35;
 
-// Keep sound effects independent from music volume
+
+// Sound effects have their own volume
 
 correctSound.volume = 1;
 
@@ -736,12 +738,12 @@ strikeSound.volume = 1;
 
 
 // ------------------------------------------
-// UPDATE MUSIC BUTTON
+// MUSIC BUTTON
 // ------------------------------------------
 
 function updateMusicButton() {
 
-  if (!musicPlaying || backgroundMusic.volume === 0) {
+  if (backgroundMusic.paused) {
 
     musicToggle.textContent = "🔇";
 
@@ -752,73 +754,36 @@ function updateMusicButton() {
 
     musicToggle.title = "Start music";
 
-    return;
-
-  }
-
-
-  if (backgroundMusic.volume < 0.5) {
-
-    musicToggle.textContent = "🔉";
-
   }
 
   else {
 
-    musicToggle.textContent = "🔊";
+    if (backgroundMusic.volume === 0) {
 
-  }
+      musicToggle.textContent = "🔇";
 
+    }
 
-  musicToggle.setAttribute(
-    "aria-label",
-    "Pause music"
-  );
+    else if (backgroundMusic.volume < 0.5) {
 
-  musicToggle.title = "Pause music";
+      musicToggle.textContent = "🔉";
 
-}
+    }
 
+    else {
 
-// ------------------------------------------
-// START MUSIC
-// ------------------------------------------
+      musicToggle.textContent = "🔊";
 
-async function startMusic() {
+    }
 
-  try {
-
-    await backgroundMusic.play();
-
-    musicPlaying = true;
-
-    updateMusicButton();
-
-  }
-
-  catch (error) {
-
-    console.warn(
-      "Background music could not start:",
-      error
+    musicToggle.setAttribute(
+      "aria-label",
+      "Pause music"
     );
 
+    musicToggle.title = "Pause music";
+
   }
-
-}
-
-
-// ------------------------------------------
-// STOP / PAUSE MUSIC
-// ------------------------------------------
-
-function stopMusic() {
-
-  backgroundMusic.pause();
-
-  musicPlaying = false;
-
-  updateMusicButton();
 
 }
 
@@ -827,17 +792,39 @@ function stopMusic() {
 // TOGGLE MUSIC
 // ------------------------------------------
 
-function toggleMusic() {
+async function toggleMusic() {
 
-  if (musicPlaying) {
+  if (backgroundMusic.paused) {
 
-    stopMusic();
+    try {
+
+      await backgroundMusic.play();
+
+      updateMusicButton();
+
+    }
+
+    catch (error) {
+
+      console.error(
+        "Could not play background music:",
+        error
+      );
+
+      musicToggle.textContent = "⚠️";
+
+      musicToggle.title =
+        "Music could not be played";
+
+    }
 
   }
 
   else {
 
-    startMusic();
+    backgroundMusic.pause();
+
+    updateMusicButton();
 
   }
 
@@ -845,7 +832,7 @@ function toggleMusic() {
 
 
 // ------------------------------------------
-// MUSIC VOLUME
+// VOLUME
 // ------------------------------------------
 
 musicVolume.addEventListener(
@@ -858,6 +845,28 @@ musicVolume.addEventListener(
     updateMusicButton();
 
   }
+);
+
+
+// ------------------------------------------
+// AUDIO STATE EVENTS
+// ------------------------------------------
+
+backgroundMusic.addEventListener(
+  "play",
+  updateMusicButton
+);
+
+
+backgroundMusic.addEventListener(
+  "pause",
+  updateMusicButton
+);
+
+
+backgroundMusic.addEventListener(
+  "ended",
+  updateMusicButton
 );
 
 
@@ -890,7 +899,6 @@ function playSound(sound) {
 
 
 updateMusicButton();
-
 
 // ==========================================
 // SLIDE NAVIGATION
