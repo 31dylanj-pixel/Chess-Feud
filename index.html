@@ -379,6 +379,48 @@
 
     </div>
 
+    <div class="game-timer">
+
+  <div class="timer-info">
+
+    <div class="timer-time">
+      <span id="timer-seconds">60</span>
+      <span class="timer-label">SECONDS</span>
+    </div>
+
+    <div class="timer-controls">
+
+          <button
+            id="timer-pause"
+            class="timer-button"
+            type="button"
+            onclick="toggleTimer()"
+          >
+            Pause
+          </button>
+    
+          <button
+            class="timer-button"
+            type="button"
+            onclick="restartTimer()"
+          >
+            Restart
+          </button>
+    
+        </div>
+    
+      </div>
+    
+      <div class="timer-track">
+    
+        <div
+          id="timer-bar"
+          class="timer-bar"
+        ></div>
+    
+      </div>
+    
+    </div>
 
     <button
       class="back-button game-back-button"
