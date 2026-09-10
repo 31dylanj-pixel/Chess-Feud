@@ -698,6 +698,168 @@ let revealedAnswers = [];
 
 let strikes = 0;
 
+let timerSeconds = 60;
+let timerInterval = null;
+let timerRunning = false;
+
+
+function updateTimerDisplay() {
+
+  const timerDisplay =
+    document.getElementById("timer-seconds");
+
+  const timerBar =
+    document.getElementById("timer-bar");
+
+
+  // Update number
+
+  if (timerDisplay) {
+    timerDisplay.textContent = timerSeconds;
+  }
+
+
+  // Update shrinking bar
+
+  if (timerBar) {
+
+    const percentage =
+      (timerSeconds / 60) * 100;
+
+    timerBar.style.width = `${percentage}%`;
+
+  }
+
+}
+
+
+function startTimer() {
+
+  // Don't start another timer
+  // if one is already running
+
+  if (timerRunning) {
+    return;
+  }
+
+
+  // Don't start if timer is finished
+
+  if (timerSeconds <= 0) {
+    return;
+  }
+
+
+  timerRunning = true;
+
+
+  const pauseButton =
+    document.getElementById("timer-pause");
+
+
+  if (pauseButton) {
+    pauseButton.textContent = "Pause";
+  }
+
+
+  timerInterval = setInterval(() => {
+
+    timerSeconds--;
+
+    updateTimerDisplay();
+
+
+    // Timer reached zero
+
+    if (timerSeconds <= 0) {
+
+      timerSeconds = 0;
+
+      updateTimerDisplay();
+
+      stopTimer();
+
+    }
+
+  }, 1000);
+
+}
+
+
+function stopTimer() {
+
+  if (timerInterval !== null) {
+
+    clearInterval(timerInterval);
+
+    timerInterval = null;
+
+  }
+
+
+  timerRunning = false;
+
+
+  const pauseButton =
+    document.getElementById("timer-pause");
+
+
+  if (pauseButton) {
+    pauseButton.textContent = "Resume";
+  }
+
+}
+
+
+function toggleTimer() {
+
+  if (timerRunning) {
+
+    stopTimer();
+
+  } else {
+
+    startTimer();
+
+  }
+
+}
+
+
+function restartTimer() {
+
+  stopTimer();
+
+  timerSeconds = 60;
+
+  updateTimerDisplay();
+
+  startTimer();
+
+}
+
+
+function resetTimer() {
+
+  stopTimer();
+
+  timerSeconds = 60;
+
+  updateTimerDisplay();
+
+
+  const pauseButton =
+    document.getElementById("timer-pause");
+
+
+  if (pauseButton) {
+    pauseButton.textContent = "Pause";
+  }
+
+}
+
+
+updateTimerDisplay();
 
 // ==========================================
 // AUDIO
@@ -943,6 +1105,9 @@ function startGame() {
 
 function loadQuestion() {
 
+  resetTimer();
+  startTimer();
+  
   const currentQuestion =
     gameQuestions[currentQuestionIndex];
 
