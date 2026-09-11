@@ -1235,9 +1235,9 @@ input {
 
   background: var(--gold);
 
-  transition: width 1s linear;
-
   transform-origin: left center;
+
+  transition: none;
 }
 
 /* =========================================
