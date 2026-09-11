@@ -698,10 +698,23 @@ let revealedAnswers = [];
 
 let strikes = 0;
 
-let timerSeconds = 60;
+// ==========================================
+// GAME TIMER
+// ==========================================
+
+const TIMER_DURATION = 60;
+
+let timerSeconds = TIMER_DURATION;
 let timerInterval = null;
 let timerRunning = false;
 
+let timerEndTime = null;
+let timerRemainingMs = TIMER_DURATION * 1000;
+
+
+// ==========================================
+// UPDATE TIMER DISPLAY
+// ==========================================
 
 function updateTimerDisplay() {
 
@@ -712,45 +725,100 @@ function updateTimerDisplay() {
     document.getElementById("timer-bar");
 
 
+  // Calculate exact percentage remaining
+
+  const percentage =
+    (timerRemainingMs / (TIMER_DURATION * 1000)) * 100;
+
+
   // Update number
 
   if (timerDisplay) {
-    timerDisplay.textContent = timerSeconds;
+
+    timerDisplay.textContent =
+      Math.ceil(timerRemainingMs / 1000);
+
   }
 
 
-  // Update shrinking bar
+  // Update bar
 
   if (timerBar) {
 
-    const percentage =
-      (timerSeconds / 60) * 100;
-
-    timerBar.style.width = `${percentage}%`;
+    timerBar.style.width =
+      `${Math.max(0, percentage)}%`;
 
   }
 
 }
 
 
-function startTimer() {
+// ==========================================
+// TIMER TICK
+// ==========================================
 
-  // Don't start another timer
-  // if one is already running
+function timerTick() {
+
+  if (!timerRunning || !timerEndTime) {
+    return;
+  }
+
+
+  // Calculate remaining time from the real clock
+
+  timerRemainingMs =
+    Math.max(0, timerEndTime - performance.now());
+
+
+  updateTimerDisplay();
+
+
+  // Timer finished
+
+  if (timerRemainingMs <= 0) {
+
+    timerRemainingMs = 0;
+
+    updateTimerDisplay();
+
+    stopTimer();
+
+    return;
+
+  }
+
+
+  // Keep checking frequently for precision
+
+  timerInterval =
+    requestAnimationFrame(timerTick);
+
+}
+
+
+// ==========================================
+// START / RESUME TIMER
+// ==========================================
+
+function startTimer() {
 
   if (timerRunning) {
     return;
   }
 
 
-  // Don't start if timer is finished
-
-  if (timerSeconds <= 0) {
+  if (timerRemainingMs <= 0) {
     return;
   }
 
 
   timerRunning = true;
+
+
+  // Set the exact moment the timer should end
+
+  timerEndTime =
+    performance.now() + timerRemainingMs;
 
 
   const pauseButton =
@@ -762,42 +830,47 @@ function startTimer() {
   }
 
 
-  timerInterval = setInterval(() => {
+  // Start immediately
 
-    timerSeconds--;
-
-    updateTimerDisplay();
-
-
-    // Timer reached zero
-
-    if (timerSeconds <= 0) {
-
-      timerSeconds = 0;
-
-      updateTimerDisplay();
-
-      stopTimer();
-
-    }
-
-  }, 1000);
+  timerInterval =
+    requestAnimationFrame(timerTick);
 
 }
 
+
+// ==========================================
+// STOP / PAUSE TIMER
+// ==========================================
 
 function stopTimer() {
 
   if (timerInterval !== null) {
 
-    clearInterval(timerInterval);
+    cancelAnimationFrame(timerInterval);
 
     timerInterval = null;
 
   }
 
 
+  // Save the exact remaining time
+
+  if (timerRunning && timerEndTime) {
+
+    timerRemainingMs =
+      Math.max(
+        0,
+        timerEndTime - performance.now()
+      );
+
+  }
+
+
   timerRunning = false;
+  timerEndTime = null;
+
+
+  updateTimerDisplay();
 
 
   const pauseButton =
@@ -810,6 +883,10 @@ function stopTimer() {
 
 }
 
+
+// ==========================================
+// PAUSE / RESUME
+// ==========================================
 
 function toggleTimer() {
 
@@ -826,24 +903,46 @@ function toggleTimer() {
 }
 
 
+// ==========================================
+// RESTART TIMER
+// ==========================================
+
 function restartTimer() {
 
   stopTimer();
 
-  timerSeconds = 60;
+
+  timerRemainingMs =
+    TIMER_DURATION * 1000;
+
 
   updateTimerDisplay();
 
-  startTimer();
+
+  // Let the browser render the full bar first.
+  // Then start the timer on the next frame.
+
+  requestAnimationFrame(() => {
+
+    startTimer();
+
+  });
 
 }
 
+
+// ==========================================
+// RESET TIMER FOR NEW QUESTION
+// ==========================================
 
 function resetTimer() {
 
   stopTimer();
 
-  timerSeconds = 60;
+
+  timerRemainingMs =
+    TIMER_DURATION * 1000;
+
 
   updateTimerDisplay();
 
@@ -858,6 +957,10 @@ function resetTimer() {
 
 }
 
+
+// ==========================================
+// INITIAL DISPLAY
+// ==========================================
 
 updateTimerDisplay();
 
