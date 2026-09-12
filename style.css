@@ -1345,3 +1345,65 @@ input {
 #timer-seconds {
   font-size: 1.3rem;
 }
+
+.timer-options {
+  position: absolute;
+  left: 0;
+  display: flex;
+  gap: 0.35rem;
+}
+
+.timer-option {
+  padding: 0.35rem 0.65rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 0.45rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--muted);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.timer-option:hover {
+  background: rgba(255, 255, 255, 0.14);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.timer-option.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #1e1b4b;
+}
+
+@media (max-width: 700px) {
+
+  .timer-options {
+    position: static;
+  }
+
+  .timer-info {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .timer-time {
+    order: 1;
+  }
+
+  .timer-options {
+    order: 2;
+  }
+
+  .timer-controls {
+    position: static;
+    order: 3;
+  }
+
+}
