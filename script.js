@@ -1015,7 +1015,7 @@ const gameQuestions = [
 
   // 17 — OPENING
   {
-    question: "Name a chess opening move players commonly make.",
+    question: "Name a chess opening move players commonly make as white.",
 
     answers: [
 
