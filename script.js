@@ -1279,22 +1279,19 @@ let revealedAnswers = [];
 let strikes = 0;
 
 // ==========================================
-// GAME TIMER
+// TIMER
 // ==========================================
 
-const TIMER_DURATION = 60;
-
-let timerSeconds = TIMER_DURATION;
-let timerInterval = null;
+let timerDuration = 60; // Default: 1 minute
 let timerRunning = false;
-
+let timerInterval = null;
 let timerEndTime = null;
-let timerRemainingMs = TIMER_DURATION * 1000;
+let timerRemainingMs = timerDuration * 1000;
 
 
-// ==========================================
+// ------------------------------------------
 // UPDATE TIMER DISPLAY
-// ==========================================
+// ------------------------------------------
 
 function updateTimerDisplay() {
 
@@ -1304,38 +1301,29 @@ function updateTimerDisplay() {
   const timerBar =
     document.getElementById("timer-bar");
 
-
-  // Calculate exact percentage remaining
+  const totalMs =
+    timerDuration * 1000;
 
   const percentage =
-    (timerRemainingMs / (TIMER_DURATION * 1000)) * 100;
-
-
-  // Update number
+    totalMs > 0
+      ? (timerRemainingMs / totalMs) * 100
+      : 0;
 
   if (timerDisplay) {
-
     timerDisplay.textContent =
       Math.ceil(timerRemainingMs / 1000);
-
   }
-
-
-  // Update bar
 
   if (timerBar) {
-
     timerBar.style.width =
       `${Math.max(0, percentage)}%`;
-
   }
-
 }
 
 
-// ==========================================
+// ------------------------------------------
 // TIMER TICK
-// ==========================================
+// ------------------------------------------
 
 function timerTick() {
 
@@ -1343,17 +1331,13 @@ function timerTick() {
     return;
   }
 
-
-  // Calculate remaining time from the real clock
-
   timerRemainingMs =
-    Math.max(0, timerEndTime - performance.now());
-
+    Math.max(
+      0,
+      timerEndTime - performance.now()
+    );
 
   updateTimerDisplay();
-
-
-  // Timer finished
 
   if (timerRemainingMs <= 0) {
 
@@ -1364,21 +1348,16 @@ function timerTick() {
     stopTimer();
 
     return;
-
   }
-
-
-  // Keep checking frequently for precision
 
   timerInterval =
     requestAnimationFrame(timerTick);
-
 }
 
 
-// ==========================================
-// START / RESUME TIMER
-// ==========================================
+// ------------------------------------------
+// START TIMER
+// ------------------------------------------
 
 function startTimer() {
 
@@ -1386,41 +1365,30 @@ function startTimer() {
     return;
   }
 
-
   if (timerRemainingMs <= 0) {
     return;
   }
 
-
   timerRunning = true;
-
-
-  // Set the exact moment the timer should end
 
   timerEndTime =
     performance.now() + timerRemainingMs;
 
-
   const pauseButton =
     document.getElementById("timer-pause");
-
 
   if (pauseButton) {
     pauseButton.textContent = "Pause";
   }
 
-
-  // Start immediately
-
   timerInterval =
     requestAnimationFrame(timerTick);
-
 }
 
 
-// ==========================================
+// ------------------------------------------
 // STOP / PAUSE TIMER
-// ==========================================
+// ------------------------------------------
 
 function stopTimer() {
 
@@ -1429,11 +1397,7 @@ function stopTimer() {
     cancelAnimationFrame(timerInterval);
 
     timerInterval = null;
-
   }
-
-
-  // Save the exact remaining time
 
   if (timerRunning && timerEndTime) {
 
@@ -1442,31 +1406,25 @@ function stopTimer() {
         0,
         timerEndTime - performance.now()
       );
-
   }
-
 
   timerRunning = false;
   timerEndTime = null;
 
-
   updateTimerDisplay();
-
 
   const pauseButton =
     document.getElementById("timer-pause");
 
-
   if (pauseButton) {
     pauseButton.textContent = "Resume";
   }
-
 }
 
 
-// ==========================================
+// ------------------------------------------
 // PAUSE / RESUME
-// ==========================================
+// ------------------------------------------
 
 function toggleTimer() {
 
@@ -1479,68 +1437,105 @@ function toggleTimer() {
     startTimer();
 
   }
-
 }
 
 
-// ==========================================
-// RESTART TIMER
-// ==========================================
+// ------------------------------------------
+// SELECT TIMER DURATION
+// ------------------------------------------
+
+function selectTimer(seconds) {
+
+  // Stop the current timer
+  stopTimer();
+
+  // Change duration
+  timerDuration = seconds;
+
+  // Reset remaining time
+  timerRemainingMs =
+    timerDuration * 1000;
+
+  // Update selected button
+  document
+    .querySelectorAll(".timer-option")
+    .forEach((button) => {
+
+      button.classList.toggle(
+        "active",
+        Number(button.dataset.duration) === seconds
+      );
+
+    });
+
+  // Update display
+  updateTimerDisplay();
+
+  // Automatically start the new timer
+  startTimer();
+}
+
+
+// ------------------------------------------
+// RESTART CURRENT TIMER
+// ------------------------------------------
 
 function restartTimer() {
 
   stopTimer();
 
-
   timerRemainingMs =
-    TIMER_DURATION * 1000;
+    timerDuration * 1000;
 
+  const timerBar =
+    document.getElementById("timer-bar");
+
+  if (timerBar) {
+
+    timerBar.classList.add("restarting");
+
+    timerBar.style.width = "100%";
+  }
 
   updateTimerDisplay();
 
+  setTimeout(() => {
 
-  // Let the browser render the full bar first.
-  // Then start the timer on the next frame.
-
-  requestAnimationFrame(() => {
+    if (timerBar) {
+      timerBar.classList.remove("restarting");
+    }
 
     startTimer();
 
-  });
-
+  }, 350);
 }
 
 
-// ==========================================
-// RESET TIMER FOR NEW QUESTION
-// ==========================================
+// ------------------------------------------
+// RESET TIMER WITHOUT STARTING
+// ------------------------------------------
 
 function resetTimer() {
 
   stopTimer();
 
-
   timerRemainingMs =
-    TIMER_DURATION * 1000;
-
+    timerDuration * 1000;
 
   updateTimerDisplay();
-
 
   const pauseButton =
     document.getElementById("timer-pause");
 
-
   if (pauseButton) {
     pauseButton.textContent = "Pause";
   }
-
 }
 
 
-// ==========================================
-// INITIAL DISPLAY
-// ==========================================
+// ------------------------------------------
+// INITIALIZE TIMER
+// ------------------------------------------
 
 updateTimerDisplay();
 
