@@ -381,15 +381,46 @@
 
     <div class="game-timer">
 
-  <div class="timer-info">
-
-    <div class="timer-time">
-      <span id="timer-seconds">60</span>
-      <span class="timer-label">SECONDS</span>
-    </div>
-
-    <div class="timer-controls">
-
+      <div class="timer-info">
+    
+        <div class="timer-time">
+          <span id="timer-seconds">60</span>
+          <span class="timer-label">SECONDS</span>
+        </div>
+    
+        <div class="timer-options">
+    
+          <button
+            class="timer-option"
+            data-duration="30"
+            type="button"
+            onclick="selectTimer(30)"
+          >
+            30s
+          </button>
+    
+          <button
+            class="timer-option active"
+            data-duration="60"
+            type="button"
+            onclick="selectTimer(60)"
+          >
+            1m
+          </button>
+    
+          <button
+            class="timer-option"
+            data-duration="180"
+            type="button"
+            onclick="selectTimer(180)"
+          >
+            3m
+          </button>
+    
+        </div>
+    
+        <div class="timer-controls">
+    
           <button
             id="timer-pause"
             class="timer-button"
@@ -412,12 +443,7 @@
       </div>
     
       <div class="timer-track">
-    
-        <div
-          id="timer-bar"
-          class="timer-bar"
-        ></div>
-    
+        <div id="timer-bar" class="timer-bar"></div>
       </div>
     
     </div>
