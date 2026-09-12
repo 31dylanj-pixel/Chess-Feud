@@ -880,10 +880,12 @@ const gameQuestions = [
       },
 
       {
-        text: "Overextending",
+        text: "Getting too aggressive",
         aliases: [
-          "overextend",
-          "overextending"
+          "too aggressive",
+          "being aggressive",
+          "aggressive",
+          "playing too aggressively"
         ]
       }
 
