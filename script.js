@@ -9,6 +9,7 @@
 
 const gameQuestions = [
 
+  // 1 — GENERAL
   {
     question: "Name something beginners often do in chess.",
 
@@ -16,7 +17,6 @@ const gameQuestions = [
 
       {
         text: "Move the queen too early",
-
         aliases: [
           "move queen",
           "queen too early",
@@ -27,7 +27,6 @@ const gameQuestions = [
 
       {
         text: "Hang a piece",
-
         aliases: [
           "hang piece",
           "lose piece",
@@ -38,7 +37,6 @@ const gameQuestions = [
 
       {
         text: "Forget to castle",
-
         aliases: [
           "not castle",
           "dont castle",
@@ -49,7 +47,6 @@ const gameQuestions = [
 
       {
         text: "Make random moves",
-
         aliases: [
           "random moves",
           "random move",
@@ -59,7 +56,6 @@ const gameQuestions = [
 
       {
         text: "Ignore piece development",
-
         aliases: [
           "dont develop",
           "don't develop",
@@ -70,7 +66,6 @@ const gameQuestions = [
 
       {
         text: "Focus on only one attack",
-
         aliases: [
           "one attack",
           "single attack",
@@ -79,9 +74,72 @@ const gameQuestions = [
       }
 
     ]
-
   },
 
+
+  // 2 — OPENING
+  {
+    question: "Name a chess opening players often learn first.",
+
+    answers: [
+
+      {
+        text: "Italian Game",
+        aliases: [
+          "italian",
+          "italian game"
+        ]
+      },
+
+      {
+        text: "Sicilian Defense",
+        aliases: [
+          "sicilian",
+          "sicilian defense"
+        ]
+      },
+
+      {
+        text: "Ruy Lopez",
+        aliases: [
+          "ruy",
+          "ruy lopez",
+          "spanish opening",
+          "spanish game"
+        ]
+      },
+
+      {
+        text: "Queen's Gambit",
+        aliases: [
+          "queens gambit",
+          "queen's gambit",
+          "qg"
+        ]
+      },
+
+      {
+        text: "London System",
+        aliases: [
+          "london",
+          "london system"
+        ]
+      },
+
+      {
+        text: "Four Knights Game",
+        aliases: [
+          "four knights",
+          "4 knights",
+          "four knights game"
+        ]
+      }
+
+    ]
+  },
+
+
+  // 3 — GENERAL
   {
     question: "Name something chess players blame after losing.",
 
@@ -89,7 +147,6 @@ const gameQuestions = [
 
       {
         text: "Their opponent got lucky",
-
         aliases: [
           "luck",
           "lucky",
@@ -99,7 +156,6 @@ const gameQuestions = [
 
       {
         text: "The clock",
-
         aliases: [
           "clock",
           "time"
@@ -108,7 +164,6 @@ const gameQuestions = [
 
       {
         text: "A distraction",
-
         aliases: [
           "distraction",
           "distracted",
@@ -118,7 +173,6 @@ const gameQuestions = [
 
       {
         text: "Their opening preparation",
-
         aliases: [
           "opening",
           "bad opening",
@@ -128,7 +182,6 @@ const gameQuestions = [
 
       {
         text: "A bad day",
-
         aliases: [
           "bad day",
           "off day"
@@ -137,7 +190,6 @@ const gameQuestions = [
 
       {
         text: "Their mouse or internet",
-
         aliases: [
           "mouse",
           "internet",
@@ -147,71 +199,70 @@ const gameQuestions = [
       }
 
     ]
-
   },
 
+
+  // 4 — ENDGAME
   {
-    question: "Name a chess piece that players hate losing.",
+    question: "Name something that becomes especially important in a chess endgame.",
 
     answers: [
 
       {
-        text: "Queen",
-
+        text: "King activity",
         aliases: [
-          "queen",
-          "my queen"
+          "king",
+          "active king",
+          "king activity"
         ]
       },
 
       {
-        text: "Rook",
-
-        aliases: [
-          "rook",
-          "my rook"
-        ]
-      },
-
-      {
-        text: "Knight",
-
-        aliases: [
-          "knight",
-          "horse"
-        ]
-      },
-
-      {
-        text: "Bishop",
-
-        aliases: [
-          "bishop"
-        ]
-      },
-
-      {
-        text: "A passed pawn",
-
+        text: "Passed pawns",
         aliases: [
           "passed pawn",
-          "pawn"
+          "passed pawns"
         ]
       },
 
       {
-        text: "The king",
-
+        text: "Pawn promotion",
         aliases: [
-          "king"
+          "promotion",
+          "promote",
+          "promoting"
+        ]
+      },
+
+      {
+        text: "Opposition",
+        aliases: [
+          "the opposition",
+          "opposition"
+        ]
+      },
+
+      {
+        text: "Pawn structure",
+        aliases: [
+          "pawns",
+          "pawn structure"
+        ]
+      },
+
+      {
+        text: "Tempo",
+        aliases: [
+          "tempos",
+          "tempo"
         ]
       }
 
     ]
-
   },
 
 
+  // 5 — GENERAL
   {
     question: "Name something you might say after making a terrible move.",
 
@@ -219,7 +270,6 @@ const gameQuestions = [
 
       {
         text: "Oops!",
-
         aliases: [
           "oops",
           "oh no",
@@ -229,7 +279,6 @@ const gameQuestions = [
 
       {
         text: "I didn't see that!",
-
         aliases: [
           "didnt see",
           "didn't see",
@@ -240,7 +289,6 @@ const gameQuestions = [
 
       {
         text: "Why did I do that?",
-
         aliases: [
           "why did i do that",
           "why",
@@ -250,7 +298,6 @@ const gameQuestions = [
 
       {
         text: "I blundered!",
-
         aliases: [
           "blunder",
           "i blundered"
@@ -259,7 +306,6 @@ const gameQuestions = [
 
       {
         text: "Can I take it back?",
-
         aliases: [
           "take it back",
           "undo",
@@ -269,7 +315,6 @@ const gameQuestions = [
 
       {
         text: "GG",
-
         aliases: [
           "gg",
           "good game"
@@ -277,10 +322,134 @@ const gameQuestions = [
       }
 
     ]
-
   },
 
 
+  // 6 — OPENING
+  {
+    question: "Name something players try to accomplish in the opening.",
+
+    answers: [
+
+      {
+        text: "Develop their pieces",
+        aliases: [
+          "develop",
+          "development",
+          "develop pieces",
+          "piece development"
+        ]
+      },
+
+      {
+        text: "Control the center",
+        aliases: [
+          "center",
+          "control center",
+          "central control"
+        ]
+      },
+
+      {
+        text: "Castle",
+        aliases: [
+          "castling",
+          "castle"
+        ]
+      },
+
+      {
+        text: "Protect the king",
+        aliases: [
+          "king safety",
+          "protect king",
+          "keep king safe"
+        ]
+      },
+
+      {
+        text: "Connect the rooks",
+        aliases: [
+          "connect rooks",
+          "rooks",
+          "connect the rook"
+        ]
+      },
+
+      {
+        text: "Gain space",
+        aliases: [
+          "space",
+          "get space"
+        ]
+      }
+
+    ]
+  },
+
+
+  // 7 — ENDGAME
+  {
+    question: "Name a common type of chess endgame.",
+
+    answers: [
+
+      {
+        text: "King and pawn",
+        aliases: [
+          "king pawn",
+          "king and pawn endgame",
+          "pawn endgame"
+        ]
+      },
+
+      {
+        text: "Rook endgame",
+        aliases: [
+          "rook",
+          "rook endgame",
+          "rook endings"
+        ]
+      },
+
+      {
+        text: "Queen endgame",
+        aliases: [
+          "queen",
+          "queen endgame"
+        ]
+      },
+
+      {
+        text: "Bishop endgame",
+        aliases: [
+          "bishop",
+          "bishop endgame"
+        ]
+      },
+
+      {
+        text: "Knight endgame",
+        aliases: [
+          "knight",
+          "knight endgame"
+        ]
+      },
+
+      {
+        text: "Queen versus pawn",
+        aliases: [
+          "queen vs pawn",
+          "queen against pawn",
+          "queen and pawn"
+        ]
+      }
+
+    ]
+  },
+
+
+  // 8 — GENERAL
   {
     question: "Name something you should always check before making a move.",
 
@@ -288,7 +457,6 @@ const gameQuestions = [
 
       {
         text: "Your opponent's threats",
-
         aliases: [
           "opponent threats",
           "their threats",
@@ -299,7 +467,6 @@ const gameQuestions = [
 
       {
         text: "Whether your king is safe",
-
         aliases: [
           "king safety",
           "king safe",
@@ -309,7 +476,6 @@ const gameQuestions = [
 
       {
         text: "If a piece is hanging",
-
         aliases: [
           "hanging piece",
           "hanging pieces",
@@ -319,7 +485,6 @@ const gameQuestions = [
 
       {
         text: "Checks",
-
         aliases: [
           "check",
           "checks"
@@ -328,7 +493,6 @@ const gameQuestions = [
 
       {
         text: "Captures",
-
         aliases: [
           "capture",
           "captures"
@@ -337,7 +501,6 @@ const gameQuestions = [
 
       {
         text: "Threats",
-
         aliases: [
           "threat",
           "threats"
@@ -345,10 +508,76 @@ const gameQuestions = [
       }
 
     ]
-
   },
 
 
+  // 9 — OPENING
+  {
+    question: "Name an opening mistake chess players often make.",
+
+    answers: [
+
+      {
+        text: "Moving the same piece twice",
+        aliases: [
+          "same piece twice",
+          "move piece twice",
+          "moving same piece"
+        ]
+      },
+
+      {
+        text: "Moving the queen too early",
+        aliases: [
+          "early queen",
+          "queen too early",
+          "move queen early"
+        ]
+      },
+
+      {
+        text: "Ignoring development",
+        aliases: [
+          "dont develop",
+          "don't develop",
+          "no development",
+          "ignore development"
+        ]
+      },
+
+      {
+        text: "Ignoring the center",
+        aliases: [
+          "ignore center",
+          "not control center",
+          "center"
+        ]
+      },
+
+      {
+        text: "Forgetting to castle",
+        aliases: [
+          "forget castle",
+          "dont castle",
+          "don't castle",
+          "not castle"
+        ]
+      },
+
+      {
+        text: "Attacking too early",
+        aliases: [
+          "early attack",
+          "attack too early",
+          "attacking early"
+        ]
+      }
+
+    ]
+  },
+
+
+  // 10 — GENERAL
   {
     question: "Name a reason someone might lose a chess game.",
 
@@ -356,7 +585,6 @@ const gameQuestions = [
 
       {
         text: "They got checkmated",
-
         aliases: [
           "checkmate",
           "checkmated",
@@ -366,7 +594,6 @@ const gameQuestions = [
 
       {
         text: "They ran out of time",
-
         aliases: [
           "time",
           "ran out of time",
@@ -377,7 +604,6 @@ const gameQuestions = [
 
       {
         text: "They blundered",
-
         aliases: [
           "blunder",
           "blundered"
@@ -386,7 +612,6 @@ const gameQuestions = [
 
       {
         text: "They resigned",
-
         aliases: [
           "resign",
           "resigned",
@@ -396,7 +621,6 @@ const gameQuestions = [
 
       {
         text: "They lost too much material",
-
         aliases: [
           "lost material",
           "lost pieces",
@@ -406,7 +630,6 @@ const gameQuestions = [
 
       {
         text: "They got distracted",
-
         aliases: [
           "distracted",
           "distraction"
@@ -414,10 +637,74 @@ const gameQuestions = [
       }
 
     ]
-
   },
 
 
+  // 11 — ENDGAME
+  {
+    question: "Name something a player might try to do with their king in an endgame.",
+
+    answers: [
+
+      {
+        text: "Activate it",
+        aliases: [
+          "active king",
+          "king activity",
+          "activate king",
+          "bring king up"
+        ]
+      },
+
+      {
+        text: "Attack pawns",
+        aliases: [
+          "attack pawns",
+          "take pawns",
+          "capture pawns"
+        ]
+      },
+
+      {
+        text: "Support a pawn",
+        aliases: [
+          "support pawn",
+          "help pawn",
+          "protect pawn"
+        ]
+      },
+
+      {
+        text: "Reach the center",
+        aliases: [
+          "center",
+          "king center",
+          "centralize king"
+        ]
+      },
+
+      {
+        text: "Stop a passed pawn",
+        aliases: [
+          "stop pawn",
+          "stop passed pawn",
+          "block pawn"
+        ]
+      },
+
+      {
+        text: "Get in front of a pawn",
+        aliases: [
+          "in front of pawn",
+          "block pawn"
+        ]
+      }
+
+    ]
+  },
+
+
+  // 12 — GENERAL
   {
     question: "Name something chess players do while thinking.",
 
@@ -425,7 +712,6 @@ const gameQuestions = [
 
       {
         text: "Stare at the board",
-
         aliases: [
           "stare",
           "look at board",
@@ -435,7 +721,6 @@ const gameQuestions = [
 
       {
         text: "Touch their face",
-
         aliases: [
           "touch face",
           "face",
@@ -445,7 +730,6 @@ const gameQuestions = [
 
       {
         text: "Calculate variations",
-
         aliases: [
           "calculate",
           "calculation",
@@ -455,7 +739,6 @@ const gameQuestions = [
 
       {
         text: "Tap their fingers",
-
         aliases: [
           "tap fingers",
           "tap",
@@ -465,7 +748,6 @@ const gameQuestions = [
 
       {
         text: "Look around the room",
-
         aliases: [
           "look around",
           "look room"
@@ -474,7 +756,6 @@ const gameQuestions = [
 
       {
         text: "Sit completely still",
-
         aliases: [
           "sit still",
           "still"
@@ -482,10 +763,75 @@ const gameQuestions = [
       }
 
     ]
-
   },
 
 
+  // 13 — OPENING
+  {
+    question: "Name a reason someone might choose a particular chess opening.",
+
+    answers: [
+
+      {
+        text: "They know it well",
+        aliases: [
+          "know it",
+          "familiar",
+          "know the opening"
+        ]
+      },
+
+      {
+        text: "It fits their playing style",
+        aliases: [
+          "playing style",
+          "style",
+          "fits my style"
+        ]
+      },
+
+      {
+        text: "It is aggressive",
+        aliases: [
+          "aggressive",
+          "attack",
+          "attacking"
+        ]
+      },
+
+      {
+        text: "It is easy to learn",
+        aliases: [
+          "easy",
+          "easy to learn",
+          "simple"
+        ]
+      },
+
+      {
+        text: "They prepared it beforehand",
+        aliases: [
+          "prepared",
+          "preparation",
+          "studied it",
+          "opening prep"
+        ]
+      },
+
+      {
+        text: "They want to surprise their opponent",
+        aliases: [
+          "surprise",
+          "surprise opponent",
+          "surprise them"
+        ]
+      }
+
+    ]
+  },
+
+
+  // 14 — GENERAL
   {
     question: "Name something that can ruin a good chess position.",
 
@@ -493,7 +839,6 @@ const gameQuestions = [
 
       {
         text: "A blunder",
-
         aliases: [
           "blunder",
           "mistake"
@@ -502,7 +847,6 @@ const gameQuestions = [
 
       {
         text: "A missed tactic",
-
         aliases: [
           "miss tactic",
           "missed tactic"
@@ -511,7 +855,6 @@ const gameQuestions = [
 
       {
         text: "Poor time management",
-
         aliases: [
           "time management",
           "bad time",
@@ -521,7 +864,6 @@ const gameQuestions = [
 
       {
         text: "Ignoring your opponent's threat",
-
         aliases: [
           "ignore threat",
           "miss threat",
@@ -531,7 +873,6 @@ const gameQuestions = [
 
       {
         text: "Moving the wrong piece",
-
         aliases: [
           "wrong piece",
           "move wrong piece"
@@ -540,7 +881,6 @@ const gameQuestions = [
 
       {
         text: "Overextending",
-
         aliases: [
           "overextend",
           "overextending"
@@ -548,10 +888,68 @@ const gameQuestions = [
       }
 
     ]
-
   },
 
 
+  // 15 — ENDGAME
+  {
+    question: "Name something a player tries to create in a pawn endgame.",
+
+    answers: [
+
+      {
+        text: "A passed pawn",
+        aliases: [
+          "passed pawn",
+          "pass pawn"
+        ]
+      },
+
+      {
+        text: "A promotion",
+        aliases: [
+          "promote",
+          "promotion",
+          "promote pawn"
+        ]
+      },
+
+      {
+        text: "A protected passed pawn",
+        aliases: [
+          "protected passed pawn",
+          "protected pawn"
+        ]
+      },
+
+      {
+        text: "A pawn majority",
+        aliases: [
+          "majority",
+          "pawn majority"
+        ]
+      },
+
+      {
+        text: "Opposition",
+        aliases: [
+          "opposition"
+        ]
+      },
+
+      {
+        text: "A breakthrough",
+        aliases: [
+          "breakthrough",
+          "pawn break"
+        ]
+      }
+
+    ]
+  },
+
+
+  // 16 — GENERAL
   {
     question: "Name something you might do before a chess tournament.",
 
@@ -559,7 +957,6 @@ const gameQuestions = [
 
       {
         text: "Practice chess",
-
         aliases: [
           "practice",
           "train",
@@ -569,7 +966,6 @@ const gameQuestions = [
 
       {
         text: "Study openings",
-
         aliases: [
           "study openings",
           "opening study",
@@ -579,7 +975,6 @@ const gameQuestions = [
 
       {
         text: "Solve puzzles",
-
         aliases: [
           "puzzles",
           "solve puzzles",
@@ -589,7 +984,6 @@ const gameQuestions = [
 
       {
         text: "Check the schedule",
-
         aliases: [
           "schedule",
           "check schedule"
@@ -598,7 +992,6 @@ const gameQuestions = [
 
       {
         text: "Get enough sleep",
-
         aliases: [
           "sleep",
           "rest"
@@ -607,7 +1000,6 @@ const gameQuestions = [
 
       {
         text: "Eat something",
-
         aliases: [
           "eat",
           "food",
@@ -616,10 +1008,135 @@ const gameQuestions = [
       }
 
     ]
-
   },
 
 
+  // 17 — OPENING
+  {
+    question: "Name a chess opening move players commonly make.",
+
+    answers: [
+
+      {
+        text: "e4",
+        aliases: [
+          "e4",
+          "pawn e4",
+          "e pawn"
+        ]
+      },
+
+      {
+        text: "d4",
+        aliases: [
+          "d4",
+          "pawn d4",
+          "d pawn"
+        ]
+      },
+
+      {
+        text: "Nf3",
+        aliases: [
+          "nf3",
+          "knight f3",
+          "knight to f3"
+        ]
+      },
+
+      {
+        text: "Nc3",
+        aliases: [
+          "nc3",
+          "knight c3",
+          "knight to c3"
+        ]
+      },
+
+      {
+        text: "c4",
+        aliases: [
+          "c4",
+          "pawn c4",
+          "c pawn"
+        ]
+      },
+
+      {
+        text: "g3",
+        aliases: [
+          "g3",
+          "pawn g3",
+          "g pawn"
+        ]
+      }
+
+    ]
+  },
+
+
+  // 18 — ENDGAME
+  {
+    question: "Name something that can decide a close chess endgame.",
+
+    answers: [
+
+      {
+        text: "King position",
+        aliases: [
+          "king",
+          "king position",
+          "king activity"
+        ]
+      },
+
+      {
+        text: "Pawn structure",
+        aliases: [
+          "pawns",
+          "pawn structure"
+        ]
+      },
+
+      {
+        text: "Passed pawns",
+        aliases: [
+          "passed pawn",
+          "passed pawns"
+        ]
+      },
+
+      {
+        text: "Calculation",
+        aliases: [
+          "calculate",
+          "calculating",
+          "calculation"
+        ]
+      },
+
+      {
+        text: "Time management",
+        aliases: [
+          "time",
+          "clock",
+          "time trouble"
+        ]
+      },
+
+      {
+        text: "Technique",
+        aliases: [
+          "endgame technique",
+          "technique"
+        ]
+      }
+
+    ]
+  },
+
+
+  // 19 — GENERAL
   {
     question: "Name something that makes a chess player nervous.",
 
@@ -627,7 +1144,6 @@ const gameQuestions = [
 
       {
         text: "Time pressure",
-
         aliases: [
           "time pressure",
           "time trouble",
@@ -637,7 +1153,6 @@ const gameQuestions = [
 
       {
         text: "Playing a stronger opponent",
-
         aliases: [
           "strong opponent",
           "better opponent",
@@ -647,7 +1162,6 @@ const gameQuestions = [
 
       {
         text: "A complicated position",
-
         aliases: [
           "complicated",
           "complex position"
@@ -656,7 +1170,6 @@ const gameQuestions = [
 
       {
         text: "Being in a losing position",
-
         aliases: [
           "losing",
           "losing position"
@@ -665,7 +1178,6 @@ const gameQuestions = [
 
       {
         text: "Tournament games",
-
         aliases: [
           "tournament",
           "competition"
@@ -674,7 +1186,6 @@ const gameQuestions = [
 
       {
         text: "Making a critical move",
-
         aliases: [
           "critical move",
           "important move"
@@ -682,11 +1193,78 @@ const gameQuestions = [
       }
 
     ]
-
   },
 
-];
 
+  // 20 — GENERAL
+  {
+    question: "Name something chess players do when they realize they are losing.",
+
+    answers: [
+
+      {
+        text: "Look for a tactic",
+        aliases: [
+          "tactic",
+          "look for tactics",
+          "find a tactic",
+          "look for a trick"
+        ]
+      },
+
+      {
+        text: "Play faster",
+        aliases: [
+          "faster",
+          "move faster",
+          "speed up",
+          "play quickly"
+        ]
+      },
+
+      {
+        text: "Attack the opponent's king",
+        aliases: [
+          "attack king",
+          "attack their king",
+          "king attack",
+          "go for the king"
+        ]
+      },
+
+      {
+        text: "Hope for a blunder",
+        aliases: [
+          "hope they blunder",
+          "wait for blunder",
+          "hope for mistake",
+          "hope they make a mistake"
+        ]
+      },
+
+      {
+        text: "Trade pieces",
+        aliases: [
+          "trade",
+          "trade pieces",
+          "exchange pieces",
+          "exchanges"
+        ]
+      },
+
+      {
+        text: "Resign",
+        aliases: [
+          "resign",
+          "resigned",
+          "give up"
+        ]
+      }
+
+    ]
+  }
+
+];
 
 // ==========================================
 // GAME STATE
