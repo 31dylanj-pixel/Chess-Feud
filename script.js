@@ -1301,6 +1301,9 @@ function updateTimerDisplay() {
   const timerBar =
     document.getElementById("timer-bar");
 
+  const timerLabel =
+    document.querySelector(".timer-label");
+
   const totalMs =
     timerDuration * 1000;
 
@@ -1309,17 +1312,50 @@ function updateTimerDisplay() {
       ? (timerRemainingMs / totalMs) * 100
       : 0;
 
+
   if (timerDisplay) {
-    timerDisplay.textContent =
+
+    const totalSeconds =
       Math.ceil(timerRemainingMs / 1000);
+
+    if (totalSeconds > 60) {
+
+      // Show MM:SS for times above 60 seconds
+
+      const minutes =
+        Math.floor(totalSeconds / 60);
+
+      const seconds =
+        totalSeconds % 60;
+
+      timerDisplay.textContent =
+        `${minutes}:${String(seconds).padStart(2, "0")}`;
+
+      if (timerLabel) {
+        timerLabel.textContent = "";
+      }
+
+    } else {
+
+      // Show the original seconds format
+      timerDisplay.textContent =
+        totalSeconds;
+
+      if (timerLabel) {
+        timerLabel.textContent =
+          "SECONDS";
+      }
+    }
   }
+
 
   if (timerBar) {
+
     timerBar.style.width =
       `${Math.max(0, percentage)}%`;
+
   }
 }
-
 
 // ------------------------------------------
 // TIMER TICK
