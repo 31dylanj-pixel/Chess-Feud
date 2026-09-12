@@ -1343,7 +1343,8 @@ function updateTimerDisplay() {
 
       if (timerLabel) {
         timerLabel.textContent =
-          "SECONDS";
+          totalSeconds === 1 ? "SECOND" : "SECONDS";
+      }
       }
     }
   }
