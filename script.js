@@ -1345,7 +1345,6 @@ function updateTimerDisplay() {
         timerLabel.textContent =
           totalSeconds === 1 ? "SECOND" : "SECONDS";
       }
-      }
     }
   }
 
